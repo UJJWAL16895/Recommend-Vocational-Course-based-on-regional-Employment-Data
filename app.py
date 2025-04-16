@@ -73,8 +73,7 @@ def get_location_multiplier_v4_1(city, state, job_complexity):
 # --- Caching Functions (No changes needed here) ---
 @st.cache_data
 def load_data(csv_path):
-    # ... (Keep existing load_data function from previous app.py version) ...
-    # It should load the correct CSV ("synthetic_vocational_tech_data_20k_v4_1.csv")
+  
     # And parse skill lists
     print(f"Attempting to load data from: {csv_path}")
     try:
@@ -87,8 +86,8 @@ def load_data(csv_path):
                  except: return []
         df['RequiredSkills_list'] = df['RequiredSkills'].apply(parse_skill_list)
         df['SkillsTaught_list'] = df['SkillsTaught'].apply(parse_skill_list)
-        st.success(f"Data loaded and parsed for {len(df)} rows.")
-        print(f"Data loaded. Columns: {df.columns.tolist()}")
+        # st.success(f"Data loaded and parsed for {len(df)} rows.")
+        # print(f"Data loaded. Columns: {df.columns.tolist()}")
         if 'JobComplexity' not in df.columns or 'EstimatedMinSalary' not in df.columns:
              st.warning("Warning: Expected columns 'JobComplexity'/'EstimatedMinSalary' not found.")
         return df
