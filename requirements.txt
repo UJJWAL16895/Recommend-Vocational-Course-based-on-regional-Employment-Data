@@ -1,10 +1,20 @@
-streamlit==1.33.0  # Or your specific version
-pandas==2.1.4     # Or your specific version
-numpy<2.0         # CRUCIAL: Keep NumPy below 2.0 for surprise compatibility! E.g. numpy==1.26.4
-scikit-learn==1.4.2 # Or your specific version
-scikit-surprise==1.1.3 # Or your specific version
-faker             # Usually okay without version, or add your version
-matplotlib        # Often needed by seaborn/plotting
-seaborn           # If app uses plots (unlikely if EDA is separate)
-wordcloud         # If app generates word clouds (unlikely)
-# Add any other libraries imported directly in app.py
+# Build tools needed for scikit-surprise compilation
+setuptools
+wheel
+Cython>=0.29.36,<3 # Specify Cython range if known issues exist, or just Cython
+
+# Core libraries - Install NumPy FIRST and specifically < 2.0
+numpy==1.26.4 # Or other specific 1.x version proven to work
+
+# Main dependencies
+streamlit==1.33.0
+pandas==2.1.4
+scikit-learn==1.4.2
+scikit-surprise==1.1.3 # Try installing AFTER numpy and build tools
+
+# Other dependencies
+faker
+matplotlib
+seaborn
+wordcloud
+# Add any other direct imports from app.py
